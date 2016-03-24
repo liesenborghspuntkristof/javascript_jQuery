@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
 <title>JS PF project: het Document Object Model</title>
-<style type="text/css" media="all">
+<style>
 body{
 	font-family:Verdana, Geneva, sans-serif;
 	color:#333;
@@ -12,7 +12,38 @@ img{
 	float:right;
 	}
 </style>
+<script>
+    window.onload = function () {
+        /* wijzig de titel */
+        var eTitel = document.getElementById("kop"); 
+        eTitel.innerHTML = "De document tree"; 
+        
+        /* wijzig tweede lijst element */
+        var liElements = document.getElementsByTagName("li"); 
+        var liTwo = liElements[1]; 
+//        liTwo.innerHTML = "C#"; 
+        liTwo.removeChild(liTwo.childNodes[0]);
+        var sTekst = document.createTextNode("C#"); 
+        liTwo.appendChild(sTekst); 
+        
+        /* Lijst bullet toevoegen "Perl" */
+        var eLijst = document.getElementsByTagName("ul")[0];
+        var eItem = document.createElement("li"); 
+        var eTekst = document.createTextNode("Perl");
+        eItem.appendChild(eTekst); 
+        eLijst.appendChild(eItem); 
+        
+        /* Titel attribute toevoegen aan img & co */
+        var eImg = document.getElementsByTagName("img")[0]; 
+        eImg.src = "../images/elise.jpg"; 
+        var sTooltip = "Elise, System engineer"; 
+        eImg.setAttribute("alt", sTooltip); 
+        eImg.title = sTooltip; 
+        
+        
+    }; 
 
+</script>
 </head>
 <body>
 <div id="container">

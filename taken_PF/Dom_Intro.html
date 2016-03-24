@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JS PF taken: het Document Object Model</title>
+<style>
+body{
+	font-family:Verdana, Geneva, sans-serif;
+	color:#333;
+	}
+img{
+	float:right;
+	}
+</style>
+<script>
+    window.onload = function() {
+        /* opdracht 1 */
+        var ePEen = document.getElementsByTagName("p")[0]; 
+        ePEen.innerHTML = ePEen.innerHTML + " en <em>chocolade</em>";
+        
+        /* opdracht 2 */
+        var eContainer = document.getElementById("container"); 
+        var eDiv = document.createElement("div"); 
+        eContainer.appendChild(eDiv);
+        eContainer.lastChild.id = "footer"; 
+        var eFoot = document.getElementById("footer"); 
+        var fTekst = "< je vind een job op de <a id='vdab'>vdab</a> website >"; 
+        eFoot.innerHTML = fTekst;  
+        document.getElementById("vdab").href = "http://www.vdab.be"; 
+        document.getElementById("vdab").target = "_blank"; 
+        
+        /* opdracht 3 */
+        var eAEen = document.getElementsByTagName("a")[0]; 
+        var aLink = "https://www.google.be/search?q=science+fiction&espv=2&biw=944&bih=1047&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiCh9Gtl9nLAhUCZQ8KHdRDBi4Q_AUIBigB";
+        eAEen.setAttribute("href", aLink); 
+        
+        /* opdracht 4 */
+        console.log(document.getElementById("container").clientWidth + "px"); 
+        
+    }; 
+</script>
+</head>
+<body>
+<div id="container">
+  <h1 id="kop">Het Document Object Model</h1>
+  <!-- dit is HTML commentaar onzichtbaar in het beeld-->
+  <p><img src="../images/linda.jpg" alt="Linda, een front-end programmeur" />De meeste programmeurs <em>leven</em> op koffie</p>
+  <p>Veel programmeurs zijn liefhebbers van <a href="http://en.wikipedia.org/wiki/Science-fiction">science-fiction</a></p>
+  <div class="menu">
+    <h2>Onze programmeertalen</h2>
+    <ul>
+      <li>Javascript</li>
+      <li>PHP</li>
+      <li>ASP.Net</li>
+      <li>Java</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
