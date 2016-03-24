@@ -24,7 +24,7 @@ img{
         eContainer.appendChild(eDiv);
         eContainer.lastChild.id = "footer"; 
         var eFoot = document.getElementById("footer"); 
-        var fTekst = "< je vind een job op de <a id='vdab'>vdab</a> website >"; 
+        var fTekst = "\< je vind een job op de <a id='vdab'>vdab</a> website \>"; 
         eFoot.innerHTML = fTekst;  
         document.getElementById("vdab").href = "http://www.vdab.be"; 
         document.getElementById("vdab").target = "_blank"; 
@@ -35,8 +35,7 @@ img{
         eAEen.setAttribute("href", aLink); 
         
         /* opdracht 4 */
-        console.log(document.getElementById("container").clientWidth + "px"); 
-        
+        console.log(document.getElementById("container").clientWidth + "px");       
     }; 
 </script>
 </head>
