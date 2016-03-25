@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta charset="UTF-8">
 <title>JS PF project: Selectie examens</title>
-<style type="text/css">
+<style>
 label {
 	display:inline-block;
 	width:6em;
@@ -38,5 +38,46 @@ label {
     <button id= "goKnop" type="button">Go</button>
   </p>
 </form>
+  <div id="output"></div>
+  <script>
+      function evalueer() {
+          /*evalueert of een student geslaagd is of niet */
+          console.log('fn evalueer'); 
+          document.getElementById("output").innerHTML = sBericht; 
+      }
+      var eKnop = document.querySelector('#goKnop'); 
+      //alert('test'); 
+      eKnop.onclick = evalueer; 
+      
+      // de invulvelden zijn objecten
+      var eWiskunde = document.getElementById("wiskunde"); 
+      var eBoekhouden = document.getElementById("boekhouden"); 
+      var eInformatica = document.getElementById("informatica"); 
+      
+      // de punten
+      var nWisk = parseInt(eWiskunde.value); 
+      var nBoek = parseInt(eBoekhouden.value); 
+      var nInfo = parseInt(eInformatica.value); 
+      
+      var nTot = nWisk + nBoek + nInfo; 
+      var nGem = nTot/3;     
+      console.log("Totaal: " + nTot + "; gemiddelde: " + nGem); 
+      
+      //de evaluatie
+      var sBericht = ""; 
+      if((nWisk >= 6 && nBoek + nInfo >= 12) || (nWisk >= 6 && nInfo === 10)) {
+          sBericht = "U bent geslaagd"; 
+          if (nGem >= 7) {
+              sBericht += " met onderscheiding"; 
+          } else {
+              sBericht += " met voldoening"; 
+          }
+      } else {
+          sBericht = "U bent NIET geslaagd"; 
+      }
+      console.log(sBericht); 
+
+
+  </script>
 </body>
 </html>
