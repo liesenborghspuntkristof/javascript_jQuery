@@ -20,17 +20,50 @@ and open the template in the editor.
     <body>
         <h1>Taak 2: Deling</h1>
         <p>Geef twee getallen in, het grootste getal zal door het kleinste gedeeld worden</p>
-        <form>
+        <form name="frmDeling" id="frmDeling" method="get">
             <label>getal 1:</label>
             <input type="number" name="getal1" id="getal1">
             <label>getal 2:</label>
             <input type="number" name="getal2" id="getal2">
             <label></label><button id="calcKnop" type="button">Calculeer</button>
         </form>
-        <div id="resultaat">TODO write content</div>
+        <div id="resultaat"></div>
         <script>
-            /* code hier */
-           
+            window.onload = function() {
+                var eKnop = document.querySelector("#calcKnop"); 
+                eKnop.onclick = resultaat; 
+            }
+            
+            function resultaat () {
+                                        
+            // de velden          
+            var eGetal1 = document.getElementById("getal1"); 
+            var eGetal2 = document.getElementById("getal2"); 
+            
+            // de getallen         
+            var nGetal1 = parseInt(eGetal1.value);
+            var nGetal2 = parseInt(eGetal2.value); 
+            
+            //de interpretatie
+           var sBericht = "";
+           var nDeling; 
+           if (nGetal1 === 0 || nGetal2 === 0) {
+               sBericht = "Nul is geen geldige invoer";
+           } else {
+               nGetal1 >= nGetal2 ? nDeling = nGetal1/nGetal2 : nDeling = nGetal2/nGetal1; 
+//                if (nGetal1 >= nGetal2) {
+//                    nDeling = nGetal1/nGetal2; 
+//                    console.log(nDeling); 
+//                } else {
+//                    nDeling = nGetal2/nGetal1;
+//                    console.log(nDeling); 
+//                }
+                sBericht = "De deling bedraagt = " + nDeling; 
+           }
+           document.getElementById("resultaat").innerHTML = sBericht;
+           console.log(sBericht); 
+
+       }
         </script>
     </body>
 </html>

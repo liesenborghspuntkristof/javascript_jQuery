@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            label {
+                display: inline-block;
+                width: 10em;
+            }
+            input {width: 10em;}
+            input[type="submit"] {
+                margin: 1em; 
+                width: 20em;
+            }
+            #kindergeld {
+                margin-top: 1em; 
+                padding: 0.5em; 
+                background-color: #00CCCC;
+            }
+        </style>
+        <script>
+            window.onload = function(){
+                var eKinderen = document.getElementById("aantalKinderen"); 
+                var eMaandloon = document.getElementById("maandloon"); 
+                var nKinderen = parseInt(eKinderen.value); 
+                var nMaandloon = parseInt(eMaandloon.value); 
+                
+                var eKnop = document.getElementById("output"); 
+                eKnop.onclick = function() {
+                    if (eKinderen === )
+                }
+                    calcKindergeld(nKinderen, nMaandloon); 
+            };
+            
+            function calcKindergeld(kinderen, maandloon) {
+                var kindergeld = 0; 
+                var toeslag = 0; 
+                switch(TRUE) {
+                    case kinderen < 3 : 
+                        kindergeld = kinderen * 25; 
+                    break;
+                    case kinderen >= 3 && kinderen < 5: 
+                        kindergeld = (kinderen * 25) + ((kinderen-2) * 12.5);
+                    break;
+                    case kinderen >= 5;   
+                        kindergeld = (kinderen * 25) + ((kinderen-2) * 12.5) + ((kinderen - 4) * 7.5);
+                    break;
+                    default:
+                        alert("false value");
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <h1>Taak 3: kindergeldberekenaar</h1>
+        <form id="kindergeldForm" method="get">
+            <label>Aantal kinderen: </label><input type="number" name="kinderen" placeholder="aantal kinderen" id="aantalKinderen">
+            </br>
+            <label>maandloon: </label><input type="text" name="maandloon" placeholder="maandloon" id="maandloon">
+            </br>
+            <input type="submit" value="bereken kindergeld" id="output">
+        </form>
+        <div id="kindergeld">TODO write content</div>
+    </body>
+</html>

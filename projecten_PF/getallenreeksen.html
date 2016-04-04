@@ -24,17 +24,30 @@ output {
 	 
 	  //=============event handlers===========
 	  
-	  eKnop.onclick = lussenMaar;
+	  eKnop.onclick = function(){
+              var nGetal = eGetal.value; 
+              if (nGetal == "" || isNaN(nGetal)) {
+                  alert(' Deze functie werkt enkel met getallen'); 
+              } else {
+              eOutput.innerHTML = lussenMaar(parseInt(nGetal)); 
+          }
+          }; 
+                  
   
   }//einde window.onload
   
   //=============functies=================
   
-  function lussenMaar(){
+  function lussenMaar(n){
   /*   Testfunctie voor iteraties  */
-	  console.log(eGetal.value)
-	  
+	  console.log(n); 
+          var sTekst = ""; 
+          for(var i = 0; i < n; i++){
+              sTekst += i + "&nbsp;"; 
+          }
+	  return sTekst; 
   }
+  
 </script>
 <title>JS PF project: Getallenreeksen</title>
 </head>
