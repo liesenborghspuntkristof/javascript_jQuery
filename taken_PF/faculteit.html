@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #output {
+                background-color: #00CCCC; 
+                margin-top: 2em; 
+                padding: 1em; 
+            }
+            #getal {
+                margin-left: 0.5em; 
+                margin-right: 4em; 
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                // variabelen
+                var eGetal = document.getElementById("getal"); 
+                var eKnop = document.getElementById("deKnop"); 
+                var eOutput = document.getElementById("output"); 
+                
+                // event handler
+                
+                eKnop.onclick = function () {
+                    var nGetal = eGetal.value; 
+                    if (nGetal === "" || isNaN(nGetal) || nGetal < 0) {
+                        alert ("ongeldige invoer"); 
+                    } else {
+                        eOutput.innerHTML = berekenFaculteit(parseInt(nGetal)); 
+                    }
+                };                 
+            }; // einde window.onload
+            
+            // bereken faculteit functie 
+            function berekenFaculteit(n) {
+                var i = n;
+                var nUitkomst = 1; 
+                var sFaculteit = ""; 
+                var sBericht = ""; 
+                if (n === 0) {
+                    sBericht = "De faculteit van 0 (0!) is 1"; 
+                } else {
+                for (i; i > 0; i--) {
+                    nUitkomst *= i;
+                    sFaculteit += i + "*"; 
+                }
+                sFaculteit = sFaculteit.substring(0, sFaculteit.length - 1); 
+                sBericht = "De faculteit van " + n + " (" + n + "! = " + sFaculteit + ") is " + nUitkomst; 
+            }
+            return sBericht;
+            }
+            
+        </script>
+    </head>
+    <body>
+        <h1>taak 4: faculteit</h1>
+        <form id="faculteitForm" method="get">
+            <label>getal: </label><input type="number" min="0" id="getal" name="getal">
+            <button type="button" id="deKnop">Bereken Faculteit</button>
+        </form>
+        <div id="output">Geef een positief getal in en faculteit wordt berekend</div>
+    </body>
+</html>
