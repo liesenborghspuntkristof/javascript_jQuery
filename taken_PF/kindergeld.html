@@ -19,44 +19,76 @@ and open the template in the editor.
                 margin: 1em; 
                 width: 20em;
             }
-            #kindergeld {
+            #output {
                 margin-top: 1em; 
                 padding: 0.5em; 
                 background-color: #00CCCC;
             }
         </style>
         <script>
-            window.onload = function(){
-                var eKinderen = document.getElementById("aantalKinderen"); 
-                var eMaandloon = document.getElementById("maandloon"); 
-                var nKinderen = parseInt(eKinderen.value); 
-                var nMaandloon = parseInt(eMaandloon.value); 
+            window.onload = function () {
                 
-                var eKnop = document.getElementById("output"); 
-                eKnop.onclick = function() {
-                    if (eKinderen === )
-                }
-                    calcKindergeld(nKinderen, nMaandloon); 
-            };
+                // de variabelen
+                var eKinderen = document.getElementById("aantalKinderen");
+                var eMaandloon = document.getElementById("maandloon");
+                var eOutput = document.getElementById("output");            
+                var eKnop = document.getElementById("deKnop");
+                
+                //event handler
+                eKnop.onclick = function () {
+                    var nKinderen = eKinderen.value;
+                    var nMaandloon = eMaandloon.value;
+                    if (nKinderen == "" || isNaN(nKinderen) || nMaandloon == "" || isNaN(nMaandloon) || nKinderen < 0 || nMaandloon < 0) {
+                        alert(' Gelieve alles in te vullen en enkel (positieve) getallen te gebruiken');
+                    } else {
+                        eOutput.innerHTML = calcKindergeld(parseInt(nKinderen), parseInt(nMaandloon));
+                    }
+                };
+            }; // einde window.onload 
             
+            // de functie
             function calcKindergeld(kinderen, maandloon) {
-                var kindergeld = 0; 
-                var toeslag = 0; 
-                switch(TRUE) {
-                    case kinderen < 3 : 
-                        kindergeld = kinderen * 25; 
-                    break;
-                    case kinderen >= 3 && kinderen < 5: 
-                        kindergeld = (kinderen * 25) + ((kinderen-2) * 12.5);
-                    break;
-                    case kinderen >= 5;   
-                        kindergeld = (kinderen * 25) + ((kinderen-2) * 12.5) + ((kinderen - 4) * 7.5);
-                    break;
+                console.log(kinderen);
+                console.log(maandloon);
+                var nKindergeld;
+                var nToeslag;
+                var nBedrag;
+                var sBericht;
+                switch (true) {
+                    case kinderen < 3:
+                        nKindergeld = kinderen * 25;
+                        break;
+                    case kinderen >= 3 && kinderen < 5:
+                        nKindergeld = (kinderen * 25) + ((kinderen - 2) * 12.5);
+                        break;
+                    case kinderen >= 5:
+                        nKindergeld = (kinderen * 25) + ((kinderen - 2) * 12.5) + ((kinderen - 4) * 7.5);
+                        break;
                     default:
                         alert("false value");
+                        break;
                 }
+                switch (true) {
+                    case maandloon <= 500:
+                        nToeslag = 25 / 100;
+                        break;
+                    case maandloon > 2000:
+                        nToeslag = -45 / 100;
+                        break;
+                    default:
+                        nToeslag = 0;
+                        break;
+                }
+                console.log(nKindergeld);
+                console.log(nToeslag);
+                nBedrag = nKindergeld + (nKindergeld * nToeslag);
+                sBericht = "U hebt recht op € " + nBedrag + " kindergeld per maand";
+                console.log(nBedrag);
+                console.log(sBericht);
+                return sBericht;
             }
-            
+
+
         </script>
     </head>
     <body>
@@ -66,8 +98,8 @@ and open the template in the editor.
             </br>
             <label>maandloon: </label><input type="text" name="maandloon" placeholder="maandloon" id="maandloon">
             </br>
-            <input type="submit" value="bereken kindergeld" id="output">
+            <button type="button" id="deKnop">bereken kindergeld</button>
         </form>
-        <div id="kindergeld">TODO write content</div>
+        <div id="output"></div>
     </body>
 </html>
