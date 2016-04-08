@@ -6,7 +6,7 @@
 
 // Image_gallery_versie1.js
 // een Javascript_PF project
-var versie = " versie 1.0"; 
+var versie = " versie 2.0"; 
 
 window.onload = function () {
     var eKop = document.querySelector('h1');
@@ -20,7 +20,7 @@ window.onload = function () {
     console.log('sidebarLinks %s geregistreerd', eLinks.length); // %s wordt vervangen door de waarde achter de komma
 
     for (var i = 0; i < eLinks.length; i++) {
-        eLinks[i].addEventListener('click', function (e) {
+        eLinks[i].addEventListener('mouseover', function (e) {
             e.preventDefault();
             toonFoto(this, eImg);
         }); 

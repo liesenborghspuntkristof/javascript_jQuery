@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #wrapper {
+                width: 90%; 
+                display: block;
+                margin: 0 auto; 
+/*                outline: #990000 dotted 1px; */
+            }
+            #title, #bVersion {text-align: center;}
+            #featureTabel {
+                border-collapse: collapse; 
+                border: 1px solid menu; 
+                margin-top: 2em;
+                width: 100%;
+                background-color: menu; 
+            }
+            #featureTabel td {
+/*                border: 1px solid #666;*/
+                box-shadow: 1px 1px 2px rgba(102,102,102,0.5); 
+                padding: 0.3em; 
+            }
+            #featureTabel tr td:last-child {text-align: center; }
+            .ja {
+                color: darkgreen; 
+                font-weight: bold; 
+            }
+            .nee {
+                background-color: firebrick; 
+                font-weight: bold;
+                color: white; 
+            }
+            .nee td {box-shadow: 1px 1px 2px rgba(178,34,34,0.5);}
+        </style>
+        <script src="../js/featuresensing.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+        <h1 id="title">Feature sensing</h1>
+        <code id="bVersion"></code>
+        </div>
+    </body>
+</html>
