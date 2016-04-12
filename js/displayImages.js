@@ -4,38 +4,46 @@
  * and open the template in the editor.
  */
 var aKnop = [
-    ["nederlands", "Alle schermen verbergen", "Alle schermen tonen"], 
-    ["english", "Hide all screenshots", "Show all screenshots"], 
+    ["nederlands", "Alle schermen verbergen", "Alle schermen tonen"],
+    ["english", "Hide all screenshots", "Show all screenshots"],
     ["français", "Masquer toutes les images", "afficher toutes les images"]
-]; 
+];
 
 
 
 window.onload = function () {
-    sVerbergTekst = aKnop[0][1]; 
-    sToonTekst = aKnop[0][2]; 
+    sVerbergTekst = aKnop[0][1];
+    sToonTekst = aKnop[0][2];
     var eTaal = document.createElement("div");
-    eTaal.id = "taal"; 
-    var eIcon = document.createElement("i"); 
-    eIcon.className = "fa fa-eye"; 
+    eTaal.id = "taal";
+    var eIcon = document.createElement("i");
+    eIcon.className = "fa fa-eye";
     eTaal.appendChild(eIcon);
-    var nT; 
-    for (nT = 0; nT < aKnop.length; nT++) {
-        var eSpan = document.createElement("span"); 
-        eSpan.className = "taalkeuze"; 
-        eSpan.innerHTML = aKnop[nT][0];
-        console.log(nT); 
-        eSpan.addEventListener("click", function(){
-            console.log(typeof nT);
-            sVerbergTekst = aKnop[nT][1];
-            sToonTekst = aKnop[nT][2]; 
-        }); 
+
+    for (var i = 0; i < aKnop.length; i++) {
+        var eSpan = document.createElement("span");
+        eSpan.className = "taalkeuze";
+        eSpan.innerHTML = aKnop[i][0];
+        eSpan.id = aKnop[i][0];
         eTaal.appendChild(eSpan);
+        var nT = parseInt(i);
+        
+        // de volgende ingreep moet gebeuren om 'the closure behaviour te omzeilen.
+        // zonder deze ingreep krijgt iedere toegewezen eventHandler dezelfde waarde => namelijk de laatste (in dit geval de franse tekst)
+        (function (nT) {
+            eSpan.addEventListener("click", function () {
+                switchLanguage(nT);           
+            });
+        })(nT);
+        // einde ingreep
+        // remember: Revealing Module Pattern        
     }
+
     var eArticle = document.getElementsByTagName("article")[0];
-    eArticle.insertBefore(eTaal, eArticle.childNodes[2]); 
-    
+    eArticle.insertBefore(eTaal, eArticle.childNodes[2]);
+
     var eHoofdknop = document.getElementById("hoofdknop");
+    eHoofdknop.innerHTML = sVerbergTekst;
     eHoofdknop.addEventListener("click", function () {
         switchHide(eHoofdknop);
     });
@@ -48,6 +56,8 @@ window.onload = function () {
 function switchHide(eKnop) {
     var eScreenshots = document.querySelectorAll(".screenshot");
     var eCarets = document.querySelectorAll(".dynamic");
+//    console.log(sToonTekst); 
+//    console.log(sVerbergTekst); 
     switch (eKnop.innerHTML) {
         case sToonTekst:
             for (var i = 0; i < eScreenshots.length; i++) {
@@ -55,7 +65,7 @@ function switchHide(eKnop) {
             }
             eKnop.innerHTML = sVerbergTekst;
             for (var i = 0; i < eCarets.length; i++) {
-                eCarets[i].className = "fa fa-caret-square-o-up dynamic"; 
+                eCarets[i].className = "fa fa-caret-square-o-up dynamic";
             }
             break;
         case sVerbergTekst:
@@ -64,7 +74,7 @@ function switchHide(eKnop) {
             }
             eKnop.innerHTML = sToonTekst;
             for (var i = 0; i < eCarets.length; i++) {
-                eCarets[i].className = "fa fa-caret-square-o-down dynamic"; 
+                eCarets[i].className = "fa fa-caret-square-o-down dynamic";
             }
             break;
     }
@@ -73,7 +83,7 @@ function switchHide(eKnop) {
 function displayCaret(e, i) {
     var eScreenshots = document.querySelectorAll(".screenshot");
     var eCheck = e.querySelector("a.screenlink");
-    console.log(eCheck);
+//    console.log(eCheck);
     if (eCheck === null) {  // first time creating caret -links 
         var eLink = document.createElement("a");
         eLink.className = "screenlink";
@@ -111,3 +121,19 @@ function switchCaret(eImg, eA, eI) {
             break;
     }
 }
+
+function switchLanguage(n) {
+//    console.log(n);
+    var eHoofdknop = document.getElementById("hoofdknop");
+    switch (eHoofdknop.innerHTML) {
+        case sVerbergTekst:
+            eHoofdknop.innerHTML = aKnop[n][1];
+            break;
+        case sToonTekst:
+            eHoofdknop.innerHTML = aKnop[n][2];
+            break;
+    }
+    sVerbergTekst = aKnop[n][1];
+    sToonTekst = aKnop[n][2];
+}
+
