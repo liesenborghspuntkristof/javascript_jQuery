@@ -28,7 +28,7 @@ window.onload = function () {
         eTaal.appendChild(eSpan);
         var nT = parseInt(i);
         
-        // de volgende ingreep moet gebeuren om 'the closure behaviour te omzeilen.
+        // de volgende ingreep moet gebeuren om 'the closure behaviour' te omzeilen.
         // zonder deze ingreep krijgt iedere toegewezen eventHandler dezelfde waarde => namelijk de laatste (in dit geval de franse tekst)
         (function (nT) {
             eSpan.addEventListener("click", function () {

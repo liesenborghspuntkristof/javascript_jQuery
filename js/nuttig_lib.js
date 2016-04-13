@@ -176,7 +176,7 @@ function willekeurig(minLimiet, maxLimiet){
 	/*returnt een willekeurig getal tussen minLimiet en maxLimiet, optioneel argumenten*/
 	var minLimiet = minLimiet || 0;
 	var maxLimiet = maxLimiet || 100;
-	return  Math.round(Math.random() * maxLimiet) + minLimiet	
+	return  Math.round(Math.random() * maxLimiet) + minLimiet; 	
 	}
 
 
@@ -294,7 +294,7 @@ function leegNode(objNode){
 	@ objNode: node, verplicht, de node die geleegd wordt
 */
 	while(objNode.hasChildNodes()){
-		objNode.removeChild(objNode.firstChild)
+		objNode.removeChild(objNode.firstChild);
 	}
 }
 //---------------------------------------------
@@ -322,7 +322,7 @@ function getElementsByClassName(classname, startElement) {
 * 
 return	collection (array van nodes)
 */
-	var eBegin = (startElement||document)
+	var eBegin = (startElement||document);
     var a = [];
     var re = new RegExp('\\b' + classname + '\\b');
     var els = eBegin.getElementsByTagName("*");
