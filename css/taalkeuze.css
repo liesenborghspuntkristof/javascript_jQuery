@@ -1,0 +1,126 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14-apr-2016, 10:47:29
+    Author     : kristof
+*/
+
+@font-face{ 
+	font-family: 'journal';
+	src: url('../webfonts/journal_regular_macroman/journal-webfont.eot');
+	src: url('../webfonts/journal_regular_macroman/journal-webfont.eot?iefix') format('eot'),
+	     url('../webfonts/journal_regular_macroman/journal-webfont.woff') format('woff'),
+	     url('../webfonts/journal_regular_macroman/journal-webfont.ttf') format('truetype'),
+	     url('../webfonts/journal_regular_macroman/journal-webfont.svg#webfont') format('svg');
+}
+
+.startpagina {
+    margin: 0;
+    background-color: black;
+}
+
+.kunstkeuze{
+    margin: 0; 
+    background-color: #9dc0d4; 
+}
+
+#background {
+    background-image: url("../images/multispeakinggroup.jpg");
+    background-color: black; 
+    height: 100vh; 
+    width: 100vw; 
+    background-repeat: no-repeat; 
+    background-position: center center;  
+}
+
+#img_container{
+    max-width: 750px;
+    width: 75vw; 
+    display: block;
+    margin: 2em auto;
+    z-index: -50; 
+}
+
+#img_container img {
+    display: block;
+    margin: auto;
+}
+
+#kunstleuze{
+    text-align: center; 
+    font-family: 'journal',  sans-serif; 
+    color: #21190c;
+    z-index:  50;
+    margin-top: 0.5em; 
+    font-size: 4em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#background_kunstkeuze{
+    background-color: #9dc0d4;
+}
+
+#keuzelijst_startpagina {
+    color: white;
+    list-style: none; 
+    display: block;
+    width: 35%;   
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: sans-serif; 
+}
+
+#keuzelijst_startpagina li {
+    display: block;
+    padding: 0.5em;
+    cursor: pointer; 
+    
+}
+
+#keuzelijst_kunstkeuze {
+    color: #21190c; 
+    list-style: none;
+    display: block; 
+    float: right;
+    
+}
+
+#keuzelijst_kunstkeuze li {
+    display: inline-block;
+    padding: 0 0.5em;
+    cursor: pointer;
+    border-right: 1px solid #21190c;
+}
+
+#keuzelijst_kunstkeuze li:last-child {
+    padding: 0 1em 0 0.5em;
+    border-right: none; 
+}
+
+.icon {
+    padding-right: 0.5em; 
+}
+
+
+/*****flex + clearfix*****/
+
+/* clear */
+.cf{clear:both;}
+/*clearfix hack*/
+
+.clearFix:before, .clearFix:after{
+    content: " ";
+    display: table;
+}
+.clearFix:after{
+    clear:both;
+}
+/*enkel voor IE6/7 */
+.clearFix{
+    *zoom: 1;
+}

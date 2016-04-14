@@ -40,7 +40,6 @@
                 text-align: left;
             }
         </style>
-        <script type="text/javascript" src="../js/nuttig_lib2.js"></script>
         <script>
             window.onload = function () {
 
@@ -52,15 +51,20 @@
                 var eKnopDebiet = document.getElementById("debiet");
 
                 //standaardwaarden
-                var sMsg = "" // bericht aan gebruiker
+                var sMsg = ""; // bericht aan gebruiker
                 var sNaam = "nieuwe klant"; //standaard invulling naam
                 var nSaldo = 0; //standaard saldo
+                
+                if(localStorage){
+                    //kan deze browser dit script aan? 
+                    console.log('localStorage'); 
+                }
 
                 //test cookie
-                if (getCookie('klantnaam')) {
+                if (localStorage.klantnaam) {
                     //gekende klant
-                    var sNaam = getCookie('klantnaam');
-                    var nSaldo = parseFloat(getCookie('saldo')).toFixed(2);
+                    var sNaam = localStorage.klantnaam;
+                    var nSaldo = parseFloat(localStorage.saldo).toFixed(2);
 
                     //bericht
                     sMsg += "Welkom " + sNaam + ", ";
@@ -113,8 +117,8 @@
                 //console.log('rekening openen');
                 var sNaam = window.prompt("Uw naam, graag?", "");
                 if (sNaam != "" && sNaam != null) {
-                    setCookie('klantnaam', sNaam, 100);
-                    setCookie('saldo', 100, 100);
+                    localStorage.setItem('klantnaam', sNaam);
+                    localStorage.setItem('saldo', 100);
                     window.history.go(0);
                 }
             }
@@ -122,8 +126,7 @@
             function rekeningSluiten() {
                 console.log('rekening sluiten');
                 //vernietigt de rekening, dus de cookies
-                clearCookie('klantnaam');
-                clearCookie('saldo');
+                localStorage.clear(); 
                 window.history.go(0);
             }
 
@@ -135,7 +138,7 @@
                 var nNieuwSaldo = 0;
                 var eBedrag = document.getElementById('bedrag');
                 var sBedrag = eBedrag.value;
-                var sSaldo = getCookie('saldo');
+                var sSaldo = localStorage.getItem("saldo"); 
                 var sBericht = "";
                 var re = /,/;
                 sBedrag = sBedrag.replace(re, '.');
@@ -159,7 +162,7 @@
                             eBedrag.focus();
                             toonWaarschuwing(sBericht);
                         } else {
-                            setCookie('saldo', nNieuwSaldo, 100);
+                            localStorage.setItem('saldo', nNieuwSaldo); 
                             window.history.go(0);
                             eBedrag.value = "";
                         }
